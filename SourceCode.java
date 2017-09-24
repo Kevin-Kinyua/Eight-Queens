@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.ArrayList;
 
-public class EightQueens {
+public class  {
 
 
 	public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class EightQueens {
 			System.out.println( solutions.size() );
 			for( int i = 0; i < solutions.size(); i++){
 				System.out.println("\n\nSolution " + (i+1));
-				if( queensAreSafe(solutions.get(i)) )
+				if( AreSafe(solutions.get(i)) )
 					printBoard(solutions.get(i));
 				else
 					System.out.println("UH OH!!!!! BETTER FIX IT!!!!!");
@@ -21,7 +21,7 @@ public class EightQueens {
 	 * determine if the chess board represented by board is a safe set up
 	 * <p>pre: board != null, board.length > 0, board is a square matrix.
 	 * (In other words all rows in board have board.length columns.),
-	 * all elements of board == 'q' or '.'. 'q's represent queens, '.'s
+	 * all elements of board == 'q' or '.'. 'q's represent , '.'s
 	 * represent open spaces.<br>
 	 * <p>post: return true if the configuration of board is safe,
 	 * that is no queen can attack any other queen on the board.
@@ -31,11 +31,11 @@ public class EightQueens {
 	 * that is no queen can attack any other queen on the board.
 	 * false otherwise.
 	*/
-	public static boolean queensAreSafe(char[][] board)
+	public static boolean AreSafe(char[][] board)
 	{	char[] validChars = {'q', '.'};
 		assert (board != null) && (board.length > 0)
 				&& isSquare(board) && onlyContains(board, validChars)
-				: "Violation of precondition: queensAreSafe";
+				: "Violation of precondition: AreSafe";
 
 
 		return true;
@@ -57,7 +57,7 @@ public class EightQueens {
 			for(int row = 0; row < board.length; row++){
 				// place queen
 				board[row][col] = 'q';
-				if( queensAreSafe(board) )
+				if( AreSafe(board) )
 					// if safe go on to next column
 					solveAllNQueens(board, col + 1, solutions);
 				board[row][col] = '.';
@@ -109,7 +109,7 @@ public class EightQueens {
 			//System.out.println(row + " " + col);
 			// place queen
 			board[row][col] = 'q';
-			if( queensAreSafe(board) )
+			if( AreSafe(board) )
 				solved = canSolve(board, col + 1);
 			if( !solved )
 				board[row][col] = '.';
